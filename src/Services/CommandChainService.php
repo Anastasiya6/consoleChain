@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ChainCommandBundle\FooBundle\Services;
+namespace App\Services;
 
 use App\Services\Application;
 use Psr\Log\LoggerInterface;

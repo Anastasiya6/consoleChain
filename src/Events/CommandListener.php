@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\ChainCommandBundle\FooBundle\Services\CommandChainService;
+use App\Services\CommandChainService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\Console\Event\ConsoleCommandEvent;

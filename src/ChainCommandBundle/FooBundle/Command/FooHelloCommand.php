@@ -2,7 +2,7 @@
 
 namespace App\ChainCommandBundle\FooBundle\Command;
 
-use App\ChainCommandBundle\FooBundle\Services\CommandChainService;
+use App\Services\CommandChainService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
