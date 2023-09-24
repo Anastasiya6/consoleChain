@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Services\Application;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -38,7 +38,7 @@ class CommandChainService
      * @param OutputInterface $output The output interface for displaying execution results.
      * @throws \Exception If an error occurs during command execution.
      */
-    public function executeChain($application,OutputInterface $output): void
+    public function executeChain(Application $application,OutputInterface $output): void
     {
         $commands = $this->registerCommands();
 
