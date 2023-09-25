@@ -19,7 +19,7 @@ class CommandChainTest extends WebTestCase
         $logger = $this->createMock(LoggerInterface::class);
 
         $output = $this->executeChain($application);
-        echo $output;
+
         $this->assertStringContainsString('Hi from Bar!', $output);
     }
 
