@@ -13,10 +13,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class FooHelloCommand extends Command
 {
-    protected static $defaultName = 'foo:hello';
     private $commandChainService;
     private $logger;
-
 
     public function __construct(CommandChainService $commandChainService,LoggerInterface $logger)
     {
@@ -28,6 +26,7 @@ class FooHelloCommand extends Command
     protected function configure(): void
     {
         $this
+            ->setName('foo:hello')
             ->addArgument('arg1', InputArgument::OPTIONAL, 'Argument description')
             ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
         ;

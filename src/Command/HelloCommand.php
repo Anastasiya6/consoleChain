@@ -37,7 +37,7 @@ class HelloCommand extends Command
             // ...
         }
 
-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+        $io->success('Hello guys!');
 
         return Command::SUCCESS;
     }

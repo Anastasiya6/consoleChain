@@ -9,6 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CommandChainService
 {
+    private $logger;
 
     public function __construct(LoggerInterface $logger)
     {
@@ -73,7 +74,8 @@ class CommandChainService
     private function registerCommands(): array
     {
         return [
-            'bar:hi'
+            'bar:hi',
+            'app:hello'
         ];
     }
 
