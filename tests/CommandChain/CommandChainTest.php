@@ -13,7 +13,6 @@ class CommandChainTest extends WebTestCase
 {
     public function testExecuteChain()
     {
-        // Создаем приложение Symfony
         $kernel = $this->createKernel();
         $kernel->boot();
         $application = new Application($kernel);
