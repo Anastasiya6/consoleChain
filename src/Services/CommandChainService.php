@@ -75,7 +75,6 @@ class CommandChainService
     {
         return [
             'bar:hi',
-            'app:hello'
         ];
     }
 
