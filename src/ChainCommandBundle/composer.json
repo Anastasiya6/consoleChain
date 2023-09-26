@@ -1,0 +1,21 @@
+{
+  "name": "ChainCommandBundle/FooBundle",
+  "description": "Symfony bundle providing a set of commands and features.",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anastasia",
+      "email": "anastasia.ab1117@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2.10",
+    "symfony/framework-bundle": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "ChainCommandBundle\\FooBundle\\": "/"
+    }
+  }
+}
