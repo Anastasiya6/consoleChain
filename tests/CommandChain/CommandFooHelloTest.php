@@ -9,32 +9,37 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Psr\Log\LoggerInterface;
 use App\ChainCommandBundle\FooBundle\Command\FooHelloCommand;
 
+/**
+ * Class CommandFooHelloTest
+ *
+ * @package App\Tests\CommandChain
+ */
 class CommandFooHelloTest extends WebTestCase
 {
+    /**
+     * Test the execution of the command chain.
+     */
     public function testCommandChain()
-        {
-            $kernel = $this->createKernel();
-            $kernel->boot();
-            $application = new Application($kernel);
-            $logger = $this->createMock(LoggerInterface::class);
-            $commandChainService = $this->createMock(CommandChainService::class);
-            $application->add(new FooHelloCommand($commandChainService,$logger));
+    {
+        $kernel = $this->createKernel();
+        $kernel->boot();
+        $application = new Application($kernel);
+        $logger = $this->createMock(LoggerInterface::class);
+        $commandChainService = $this->createMock(CommandChainService::class);
+        $application->add(new FooHelloCommand($commandChainService, $logger));
 
-            $command = $application->find('foo:hello');
-            $commandTester = new CommandTester($command);
-            $commandTester->execute(array('command' => $command->getName()));
+        $command = $application->find('foo:hello');
+        $commandTester = new CommandTester($command);
+        $commandTester->execute(['command' => $command->getName()]);
 
-            $this->assertEquals(0, $commandTester->getStatusCode());
+        $this->assertEquals(0, $commandTester->getStatusCode());
+        $this->assertStringContainsString('Hello from Foo!', $commandTester->getDisplay());
 
-            $this->assertStringContainsString('Hello from Foo!', $commandTester->getDisplay());
+        $barCommand = $application->find('bar:hi');
+        $barCommandTester = new CommandTester($barCommand);
+        $barCommandTester->execute([]);
 
-            $barCommand = $application->find('bar:hi');
-            $barCommandTester = new CommandTester($barCommand);
-            $barCommandTester->execute([]);
-
-            $this->assertEquals(0, $commandTester->getStatusCode());
-
-            $this->assertStringContainsString('Hi from Bar!', $barCommandTester->getDisplay());
-
-        }
+        $this->assertEquals(0, $barCommandTester->getStatusCode());
+        $this->assertStringContainsString('Hi from Bar!', $barCommandTester->getDisplay());
+    }
 }
